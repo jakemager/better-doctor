@@ -1,0 +1,26 @@
+<div *ngIf="!!doctors" class="searchResultsWrapper">
+  <div>Search Results - {{ doctors.meta.total }} Doctors</div>
+  <hr />
+  <div
+    *ngFor="let doctor of doctors.data"
+    [routerLink]="['/doctor', doctor.uid]"
+    class="doctorContainer"
+  >
+    <div class="doctorInfo">
+      <img [src]="doctor.profile.image_url" />
+      <div class="doctorInfoInner">
+        <span class="doctorName"
+          >{{ doctor.profile.first_name }} {{ doctor.profile.last_name }},
+          {{ doctor.profile.title }}
+        </span>
+        <div class="doctorSpecial">
+          <span *ngFor="let special of doctor.specialties; let isLast = last">
+            {{ special.name }}{{ isLast ? '' : ', ' }}
+          </span>
+        </div>
+        <span class="distance"> {{ getDistance(doctor) }} miles away </span>
+      </div>
+    </div>
+    <span class="insurances">{{ doctor.insurances.length }} Insurances Carriers</span>
+  </div>
+</div>

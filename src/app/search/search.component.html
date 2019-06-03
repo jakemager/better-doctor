@@ -1,0 +1,13 @@
+<div class="search">
+  <div class="searchFormContainer">
+    <div class="searchFormInner">
+      <h3>Find your doctor with Better Doctor today</h3>
+      <form [formGroup]="searchForm" (ngSubmit)="onSearch(searchForm.value)" class="searchForm">
+        <input type="text" formControlName="name" placeholder="Doctor Name" />
+        <input type="text" formControlName="insurance" placeholder="Insurance" />
+        <input type="text" formControlName="location" placeholder="Location" />
+        <button class="button" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</div>
